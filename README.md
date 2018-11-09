@@ -15,3 +15,5 @@ Assuming you cloned this repository on your computer, you can compile these proj
 1. Get Processing from [Processing Foundation download page](https://processing.org/download/).
 2. In your Processing IDE folder (processing-x.x) run command:
 `processing-java --sketch=/full/path/to/your/sketch/dir --force --run`
+
+More information on using the command line can be learned on [Processing's wiki page](https://github.com/processing/processing/wiki/Command-Line).
