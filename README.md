@@ -4,6 +4,9 @@ This repository includes various projects and sketches made with Processing IDE.
 If you want to create your own projects from these ideas and if you want to learn more about Processing, you can watch the series of tutorials at [The Coding Train](https://www.youtube.com/user/shiffman) youtube channel hosted by Daniel.
 
 # Running and compiling
+Source files and folders which contain compiled simulation are located in the `processing/{simulationName}/sketch` folder.
+If you want to run compiled simulation, just open the folder which contains the executable for your platform.
+
 Assuming you cloned this repository on your computer, you can compile these projects using Processing IDE or command line.
 ## 1. Using Processing IDE
 1. Get Processing from [Processing Foundation download page](https://processing.org/download/).
