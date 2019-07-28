@@ -14,8 +14,8 @@ import java.io.IOException;
 
 public class sketch extends PApplet {
 
-int vertices = 20;
-int verticesIncrease = 1;
+int pointsNumber = 20;
+int pointsIncrease = 1;
 float quotient = 2;
 float qIncrease = 0.1f;
 
@@ -51,14 +51,14 @@ public void draw() {
 public void keyPressed() {
   if(key == 'i' || key == 'I') {
     //Increase the number of vertices on the circle
-    vertices += verticesIncrease;
+    pointsNumber += pointsIncrease;
     calculatePoints();
     calculateLines();
   }
   
-  if((key == 'k' || key == 'K') && vertices - verticesIncrease > 0) {
+  if((key == 'k' || key == 'K') && pointsNumber - pointsIncrease > 0) {
     //Increase the number of vertices on the circle
-    vertices -= verticesIncrease;
+    pointsNumber -= pointsIncrease;
     calculatePoints();
     calculateLines();
   }
@@ -81,9 +81,9 @@ public void calculatePoints() {
     points.clear();
   }
   
-  float angle = TWO_PI / (float) vertices;
-  for(int i = 0; i < vertices; i++) {
-    points.add(new Point(circleRadius * sin(angle * i), circleRadius * cos(angle * i), i, vertices));
+  float angle = TWO_PI / (float) pointsNumber;
+  for(int i = 0; i < pointsNumber; i++) {
+    points.add(new Point(circleRadius * sin(angle * i), circleRadius * cos(angle * i), i, pointsNumber));
   }
 }
 
@@ -99,7 +99,7 @@ public void drawInfo() {
   textSize(15);
   text("To increase the number of dots press [I]. To decrease the number, press [K] on your keyboard.", 10, 15);
   text("To increase the quotient, press [U] key, to decrease it, press [J] key.", 10, 35);
-  text("Current number of vertices: " + vertices, 10, 55);
+  text("Current number of vertices: " + pointsNumber, 10, 55);
   text("Current quotient value: " + quotientStr, 10, 75);
 }
 class Point {
@@ -107,13 +107,13 @@ class Point {
   float y;
   int value;
   int connectTo; //This is the value of another point which should be connected to this particular point by a line.
-  int vertices; //This holds the number of points, just like in the sketch tab.
+  int pointsNumber; //This holds the number of points, just like in the sketch tab.
   
-  Point(float x, float y, int value, int vertices) {
+  Point(float x, float y, int value, int pointsNumber) {
     this.x = x;
     this.y = y;
     this.value = value;
-    this.vertices = vertices;
+    this.pointsNumber = pointsNumber;
   }
   
   public void draw() {
@@ -124,11 +124,12 @@ class Point {
   
   public void drawLine(ArrayList<Point> points) {
     stroke(0);
-    line(x, y, points.get(connectTo).x, points.get(connectTo).y);
+    Point connectPoint = points.get(connectTo);
+    line(x, y, connectPoint.x, connectPoint.y);
   }
   
   public void connectTo(float quotient) {
-    this.connectTo = floor(quotient * this.value) % vertices;
+    this.connectTo = floor(quotient * this.value) % pointsNumber;
   }
 }
   public void settings() {  size(800, 800); }

@@ -3,13 +3,13 @@ class Point {
   float y;
   int value;
   int connectTo; //This is the value of another point which should be connected to this particular point by a line.
-  int vertices; //This holds the number of points, just like in the sketch tab.
+  int pointsNumber; //This holds the number of points, just like in the sketch tab.
   
-  Point(float x, float y, int value, int vertices) {
+  Point(float x, float y, int value, int pointsNumber) {
     this.x = x;
     this.y = y;
     this.value = value;
-    this.vertices = vertices;
+    this.pointsNumber = pointsNumber;
   }
   
   public void draw() {
@@ -20,10 +20,11 @@ class Point {
   
   public void drawLine(ArrayList<Point> points) {
     stroke(0);
-    line(x, y, points.get(connectTo).x, points.get(connectTo).y);
+    Point connectPoint = points.get(connectTo);
+    line(x, y, connectPoint.x, connectPoint.y);
   }
   
   public void connectTo(float quotient) {
-    this.connectTo = floor(quotient * this.value) % vertices;
+    this.connectTo = floor(quotient * this.value) % pointsNumber;
   }
 }

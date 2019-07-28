@@ -1,5 +1,5 @@
-int vertices = 20;
-int verticesIncrease = 1;
+int pointsNumber = 20;
+int pointsIncrease = 1;
 float quotient = 2;
 float qIncrease = 0.1;
 
@@ -35,14 +35,14 @@ void draw() {
 void keyPressed() {
   if(key == 'i' || key == 'I') {
     //Increase the number of vertices on the circle
-    vertices += verticesIncrease;
+    pointsNumber += pointsIncrease;
     calculatePoints();
     calculateLines();
   }
   
-  if((key == 'k' || key == 'K') && vertices - verticesIncrease > 0) {
+  if((key == 'k' || key == 'K') && pointsNumber - pointsIncrease > 0) {
     //Increase the number of vertices on the circle
-    vertices -= verticesIncrease;
+    pointsNumber -= pointsIncrease;
     calculatePoints();
     calculateLines();
   }
@@ -65,9 +65,9 @@ void calculatePoints() {
     points.clear();
   }
   
-  float angle = TWO_PI / (float) vertices;
-  for(int i = 0; i < vertices; i++) {
-    points.add(new Point(circleRadius * sin(angle * i), circleRadius * cos(angle * i), i, vertices));
+  float angle = TWO_PI / (float) pointsNumber;
+  for(int i = 0; i < pointsNumber; i++) {
+    points.add(new Point(circleRadius * sin(angle * i), circleRadius * cos(angle * i), i, pointsNumber));
   }
 }
 
@@ -83,6 +83,6 @@ void drawInfo() {
   textSize(15);
   text("To increase the number of dots press [I]. To decrease the number, press [K] on your keyboard.", 10, 15);
   text("To increase the quotient, press [U] key, to decrease it, press [J] key.", 10, 35);
-  text("Current number of vertices: " + vertices, 10, 55);
+  text("Current number of vertices: " + pointsNumber, 10, 55);
   text("Current quotient value: " + quotientStr, 10, 75);
 }
