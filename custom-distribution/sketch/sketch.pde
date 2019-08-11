@@ -6,7 +6,7 @@ float barN = 200;
 float barW;
 
 float distFunc(float x) {
-  return x * x * x;
+  return x * x;
 }
 
 void setup() {
